@@ -51,6 +51,9 @@ class ssh(
   Boolean $permit_root_login = false,
   Integer $port = 22,
 ) {
+  notify { "test_scope_var":
+    message => "test top scope ${::top_scope}"
+  }
   class { '::ssh::install': } ->
   class { '::ssh::config': }
   class { '::ssh::service': 
